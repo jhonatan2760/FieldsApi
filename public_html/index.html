@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <script
+            src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script>
+        <script type="text/javascript" src="js/field_api.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <title>Fields complete</title>
+        <style>
+            #m{
+                margin : 30px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id='m' >
+            <form action="javascript:return false;" method="" class='form-group' id='container'>
+            </form>
+        </div>
+    </body>
+    <script type='text/javascript'>
+        $(document).ready(function (e) {
+
+            createFields({container: "#container",
+                fields:
+                        [
+                            {
+                                label: "Login",
+                                input: "text",
+                                name: "login",
+                                validate: true
+                            },
+                            {
+                                label: "Senha",
+                                input: "password",
+                                name: "senha",
+                                validate: true
+                            }
+                        ],
+                buttons: [
+                    {
+                        label: "Logar",
+                        click: function (e) {
+                            alert("Funcionou!");
+                        },
+                        ajax: {
+                            url: "http://login",
+                            method: "POST",
+                            success: function (data) {
+                                console.log(data);
+                            },
+                            error: function (ex) {
+                                console.log(ex);
+                            }
+                        }
+                    }
+                ]
+            });
+        });
+    </script>
+</html>
